@@ -5,6 +5,6 @@
 FROM python:slim
 
 # Install pandoc and dependencies for pdf creation
-RUN apt update && apt install -y pandoc texlive-xetex
+RUN apt update && apt install -qy pandoc texlive-xetex
 
-RUN pip install mkdocs mkdocs2pandoc
+RUN pip install mkdocs && pip install mkdocs2pandoc
