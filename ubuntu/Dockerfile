@@ -5,8 +5,15 @@
 FROM ubuntu
 
 # Install pandoc and dependencies for pdf creation and git for the phyton script
-RUN apt update && apt install -qy pandoc texlive-xetex git imagemagick python-pip
+RUN apt-get update && \
+  apt-get install -y pandoc texlive-xetex \
+  git imagemagick python3-pip python3 python3-dev && \
+  apt-get clean
 
-RUN pip install mkdocs && pip install git+https://github.com/backfighter/mkdocs-combine.git
-# Git is not needed we reduce the size a little bit
-RUN apt remove -qy git
+RUN cd /usr/bin && ln -sf pip3 pip && ln -sf python3 python
+
+RUN pip install --upgrade pip && \
+    pip install mkdocs && \
+    pip install git+https://github.com/backfighter/mkdocs-combine.git
+# Git is not needed we reduce the size a little bit 
+RUN apt-get remove -y git

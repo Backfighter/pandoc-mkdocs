@@ -4,9 +4,13 @@
 #
 FROM python:slim
 
-# Install pandoc and dependencies for pdf creation and git for the phyton script
-RUN apt update && apt install -qy pandoc texlive-xetex git imagemagick
+ENV PANDOC_VERSION "1.19.2.1"
+
+RUN apt-get update && apt-get install -qy wget texlive-xetex git imagemagick
+
+RUN wget http://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/$PANDOC_VERSION-1-amd64.deb -O pandoc.deb && \
+    dpkg -i pandoc.deb && rm pandoc.deb
 
 RUN pip install mkdocs && pip install git+https://github.com/backfighter/mkdocs-combine.git
 # Git is not needed we reduce the size a little bit
-RUN apt remove -qy git
+RUN apt-get remove -qy wget git && apt-get clean
