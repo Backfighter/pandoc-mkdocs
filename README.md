@@ -3,12 +3,12 @@
 [![](https://images.microbadger.com/badges/image/silentstorm/pandoc-mkdocs.svg)](https://microbadger.com/images/silentstorm/pandoc-mkdocs "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/silentstorm/pandoc-mkdocs.svg)](https://microbadger.com/images/silentstorm/pandoc-mkdocs "Get your own version badge on microbadger.com")
 
-This is a docker image made for GitLab-CI. It contains mkdocs as well as pandoc with LaTeX so it can output pdf-files.
+This is a docker image made for GitLab-CI. It contains mkdocs as well as pandoc with LaTeX(for pdf support).
 Besides that it contains a helper script that uses the mkdocs.yml to merge all the markdown files from your documentation into
 one single file which can be used by pandoc to generate a pdf-file of your documentation.
-Additionally imagemagick is also contained which helps you change images before creation of the mkdocs-site or the pdf.
+Imagemagick is also contained which helps you change images before creation of the mkdocs-site or the pdf.
 
-Even though the `latest`-tag image is based on debian it contains version `1.19.2.1` of pandocs.
+Even though the `latest`-tag image is based on debian it doesn't contain the packaged version from the debian repository but version `1.19.2.1` of pandocs from their download page.
 
 ## Example
 
