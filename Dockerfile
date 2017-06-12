@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -qy wget texlive-xetex git imagemagick
 RUN wget $DOWNLOAD_URL -O pandoc.deb && \
     dpkg -i pandoc.deb && rm pandoc.deb
 
-RUN pip install mkdocs && pip install git+https://github.com/backfighter/mkdocs-combine.git
+RUN pip install mkdocs && \
+    pip install git+https://github.com/backfighter/mkdocs-combine.git && \
+    pip install git+https://github.com/facelessuser/pymdown-extensions.git
 # Git is not needed we reduce the size a little bit
 RUN apt-get remove -qy wget git && apt-get clean
